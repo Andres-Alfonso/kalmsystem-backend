@@ -7,6 +7,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { User } from './modules/auth/entities/user.entity';
 import { Role } from './modules/auth/entities/role.entity';
 import { RoleUser } from './modules/auth/entities/role-user.entity';
+import { MetricsModule } from './modules/metrics/metrics.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { RoleUser } from './modules/auth/entities/role-user.entity';
       synchronize: false,
     }),
     AuthModule,
+    MetricsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -9,6 +9,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 export interface TokenUser {
   id: string;
   email: string;
+  client: number;
   roles: string[];
 }
 
@@ -47,6 +48,7 @@ export class AuthService {
         user: {
           id: user.id.toString(),
           email: user.email,
+          client: user.client_id,
           roles: user.roleUsers ? user.roleUsers.map(roleUser => roleUser.role.name) : [],
         }
       };
@@ -63,6 +65,7 @@ export class AuthService {
     return {
       id: decoded.id,
       email: decoded.email,
+      client: decoded.client,
       roles: decoded.roles,
     };
   }
@@ -105,6 +108,7 @@ export class AuthService {
       const user: TokenUser = {
         id: payload.sub,
         email: payload.email,
+        client: payload.client,
         roles: payload.roles,
       };
 
